@@ -1,0 +1,61 @@
+1. Maximum Number of Perfect Boxes
+Problem Statement
+At the end of a working day, a bakery prepares N pastries, where each pastry contains a
+certain number of cherries. The bakery wants to pack these pastries into boxes.
+A box is said to be perfect if the sum of cherries of the pastries in that box is divisible by 3.
+Any number of pastries can be placed in a box, and each pastry can be used only once.
+You are given an integer N representing the number of pastries and an integer array A of
+size N, where each element denotes the number of cherries on a pastry.
+Your task is to determine the maximum number of perfect boxes that can be formed by
+grouping the pastries in any order.
+
+Input Format
+ The first line contains an integer N, denoting the number of pastries.
+ The second line contains N space-separated integers representing the number of
+cherries on each pastry.
+
+Output Format
+ Print a single integer representing the maximum number of perfect boxes that can
+be formed.
+
+Sample Input
+7
+3 1 6 4 7 5 2
+Sample Output
+4
+Note
+ Grouping of pastries can be done in any order.
+ Each pastry must belong to at most one box.
+
+// Java Code
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int count0 = 0;
+        int count1 = 0;
+        int count2 = 0;
+        for(int i=0; i<N; i++) {
+            int x = sc.nextInt() % 3;
+            if(x == 0) 
+                count0++;
+            else if(x == 1) 
+                count1++;
+            else
+                count2++;
+            
+        }
+        int boxes=0;
+        boxes += count0;
+        int pair = Math.min(count1, count2);
+        boxes += pair;
+        count1 -= pair;
+        count2 -= pair;
+        boxes += count1 / 3;
+        boxes += count2 / 3;
+        System.out.println(boxes);
+        sc.close();
+    }
+}
