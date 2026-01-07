@@ -1,0 +1,54 @@
+2. Maximum Number of Rainbows
+Problem Statement
+A rainbow is formed using seven distinct colours: Violet (v), Indigo (i), Blue (b), Green (g),
+Yellow (y), Orange (o), and Red (r).
+Each rainbow requires exactly one occurrence of each colour.
+You are given a string S consisting of lowercase characters, where each character
+represents the first letter of a colour.
+Your task is to determine the maximum number of complete rainbows that can be formed
+using the characters of the string. Each character can be used only once.
+
+Input Format
+ A single string S containing lowercase alphabets.
+
+Output Format
+ Print an integer representing the maximum number of rainbows that can be
+formed.
+
+Sample Input
+vbgybro
+Sample Output
+1
+
+// Java code 
+
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String s =sc.next();
+    int[] count = new int[7];
+    for(char c : s.toCharArray()) {
+        if(c == 'v')
+           count[0]++;
+        else if(c == 'i')
+           count[1]++;
+        else if(c == 'b')
+           count[2]++;
+        else if(c == 'g')
+            count[3]++;
+        else if(c == 'y')
+            count[4]++;
+        else if(c == 'o')
+            count[5]++;
+        else if(c == 'r')
+            count[6]++;
+      }
+      int min = Integr.MAX_VALUE;
+      for(int i=0; i<7; i++) {
+          int min = (min, count[i]);
+      }
+      System.out.println(min);
+      sc.close();
+  }
+}
