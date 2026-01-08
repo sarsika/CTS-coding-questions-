@@ -1,0 +1,51 @@
+3. Find Equilibrium Index of a String
+Problem Statement
+You are given a string S consisting of lowercase English letters.
+Each character has a weight equal to its position in the English alphabet
+(a = 1, b = 2, ..., z = 26).
+Find the smallest index (0-based) such that the sum of character weights to the left of that
+index is equal to the sum of character weights to the right of that index.
+The character at the equilibrium index should not be included in either sum.
+If no such index exists, return -1.
+
+Input Format
+ A single string S
+
+Output Format
+ Print an integer representing the equilibrium index, or -1 if none exists.
+
+Single character
+Input: &quot;a&quot;
+Output: 0
+Balanced case
+Input: &quot;bac&quot;
+Weights: 2 | 1 | 3
+Output: 1
+No equilibrium
+Input: &quot;abcd&quot;
+Output: -1
+
+// Java Code
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        String s  = sc.next();
+        int totalSum = 0;
+        for(int i=0; i<s.length(); i++) {
+            totalSum += (s.charAt(i) - 'a' + 1); 
+        }
+        int leftSum = 0;
+        for(int i=0; i<s.length(); i++) {
+            int currentweight = s.charAt(i) - 'a' + 1;
+            int rightSum = totalSum - leftSum - currentweight;
+            if(leftSum == rightSum) {
+                System.out.println(i);
+                return;
+            }
+            leftSum += currentweight;
+        }
+        System.out.println(-1);
+    }
+}
