@@ -1,0 +1,54 @@
+You are given a string S containing lowercase letters and digits. From S. extract all
+maximal consecutive digit substrings and from these substrings form adjacent pairs.
+For each pair (A.B) you have to compare:
+The last digit of substring A with the first digit of substring B
+Your task is to find and return an integer value representing the number of valid
+adjacent digit substring pairs where the last digit of the first substring is not equal to
+the first digit of the second.
+
+Input Specification:
+input1: A string S consisting of digits (0-9) and lowercase English letters (a-2)
+
+Output Specification:
+Return an integer value representing the number of valid adjacent digit substring
+pairs where the last digit of the first substring is not equal to the first digit of the
+second
+
+Example 1:
+input1: ab123cd45ef67gh8
+Output: 3
+
+// Java Code
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        ArrayList<String>List = new ArrayList<>();
+        String temp = "";
+        for(int i=0; i<s.length(); i++) {
+            char ch = s.charAt(i);
+            if(Character.isDigit(ch)) {
+                temp += ch;
+            }else {
+                if(!temp.isEmpty()) {
+                    List.add(temp);
+                    temp = "";
+                }
+            }
+        }
+        if(!temp.isEmpty()) {
+            List.add(temp);
+        }
+        int count = 0;
+        for(int i =0; i<List.size()-1; i++) {
+            char last = List.get(i).charAt(List.get(i).length()-1);
+            char first = List.get(i + 1).charAt(0);
+               if(last != first){
+                    count++;
+                }
+        }
+        System.out.println(count);
+    }
+}
