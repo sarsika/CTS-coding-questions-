@@ -1,0 +1,36 @@
+You are given a string S consisting of lowercase English letters and digits, where the
+letters represent items and the digits represent packaging lines. You have to count
+how many items are wrapped by packaging lines, ie.. how many letters have a digit
+on the left and a digit on the right in the string. Your task is to find and return an
+integer value representing the number of items wrapped in packaging lines.
+
+Input Specification:
+input1: A string 5 containing only lowercase English letters and digits (0-9).
+
+Output Specification:
+Return an integer value representing the number of items wrapped in packaging
+lines.
+
+Example 1:
+Input1: 1a2b304d5
+
+Output: 3
+
+// Java Code
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int count = 0;
+        for(int i=0; i<s.length(); i++) {
+            if(Character.isLetter(s.charAt(i)) && 
+            Character.isDigit(s.charAt(i-1)) && 
+            Character.isDigit(s.charAt(i+1))) {
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+}
